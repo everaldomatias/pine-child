@@ -17,6 +17,59 @@
 .home article.has-post-thumbnail {
 	margin-top: 0;
 }
+@media ( min-width: 480px ) {
+	.featured-intro {
+		padding-bottom: 0 !important;
+		padding-top: 50px !important;
+	}	
+}
+
+
+/* Header */
+.iniciais-list {
+	overflow: hidden;
+	width: 100%
+}
+.iniciais-list a {
+	background-color: #eee;
+	border-radius: 70px;
+	color: #333;
+    padding: 7px;
+    display: inline-block;
+    height: 40px;
+    margin: 0 8px;
+    text-align: center;
+    width: 40px;
+}
+.iniciais-list a:hover {
+	text-decoration: none;
+}
+
+/* Perfil */
+.single-perfil .pes {
+	background: url( 'assets/images/feet.png' ) left center no-repeat;
+	background-size: 40px;
+	display: block;
+	padding: 15px  0 15px 50px;
+}
+.single-perfil .instagram {
+	background: url( 'assets/images/instagram.png' ) left center no-repeat;
+	background-size: 40px;
+	display: block;
+	padding: 15px  0 15px 50px;
+}
+.single-perfil .facebook {
+	background: url( 'assets/images/facebook.png' ) left center no-repeat;
+	background-size: 40px;
+	display: block;
+	padding: 15px  0 15px 50px;
+}
+.single-perfil .link {
+	background: url( 'assets/images/link.png' ) left center no-repeat;
+	background-size: 40px;
+	display: block;
+	padding: 15px  0 15px 50px;	
+}
 
 .gradient {
 	display: none;

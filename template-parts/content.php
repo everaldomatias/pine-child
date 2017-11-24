@@ -9,7 +9,7 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-sm-6' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-sm-4' ); ?>>
 	<?php if ( has_post_thumbnail() ) : ?>
 		<a href="<?php the_permalink(); ?>" class="post-item__image"<?php pine_thumbnail_src( 'pine-column-full' ); ?>></a>
 	<?php
