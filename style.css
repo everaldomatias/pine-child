@@ -12,3 +12,12 @@
  *	Domain Path: /languages/
  *	Tags:
 */
+
+.archive article.has-post-thumbnail,
+.home article.has-post-thumbnail {
+	margin-top: 0;
+}
+
+.gradient {
+	display: none;
+}
