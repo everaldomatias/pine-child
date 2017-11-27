@@ -70,6 +70,15 @@
 	display: block;
 	padding: 15px  0 15px 50px;	
 }
+.single-perfil #button-report {
+	border-radius: 5px;
+	font-size: 12px;
+	padding: 7px 10px;
+}
+.single-perfil .report {
+	display: none;
+	transition: height .3s ease-in-out;
+}
 
 .gradient {
 	display: none;

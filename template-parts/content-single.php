@@ -46,6 +46,7 @@
 		<?php endif; ?>
 
 		<?php if ( ! empty( $to_report ) ): ?>
+		<button id="button-report">Reportar erro ou denunciar?</button>
 			<div class="report">
 				<span><?php _e( 'Use o formulário abaixo para reportar informações erradas, abuso ou ofensas nesse perfil. Sua identidade será preservada e seus dados utilizados apenas para entrar em contato caso necessário.', 'pine_child' ); ?></span>
 				<?php echo do_shortcode( '[contact-form-7 title="Denunciar"]' ); ?>

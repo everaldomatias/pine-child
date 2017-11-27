@@ -28,7 +28,7 @@ function pine_child_scripts() {
 	wp_enqueue_style( 'pine-child-style', get_stylesheet_uri(), $style_dependencies );
 
 	// Child scripts.
-	wp_enqueue_script( 'pine-child-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'pine-scripts' ), '20160415', true );
+	wp_enqueue_script( 'pine-child-scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'pine-scripts' ), '20171126', true );
 }
 add_action( 'wp_enqueue_scripts', 'pine_child_scripts' );
 
