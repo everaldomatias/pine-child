@@ -48,3 +48,48 @@ function pine_define_inicial( $post_ID, $post, $update ) {
 
 }
 add_action( 'save_post_perfil', 'pine_define_inicial', 10, 3 );
+
+/**
+ * Footer with list of the Perfil's
+ */
+function footer_list_perfil() {
+	echo "<div class='footer-list-perfil'>";
+	echo "<div class='container'>";
+	$args = array(
+		'post_type' => 'perfil',
+		'posts_per_page' => -1,
+		'post_status' => 'publish'
+	);
+	$footer_list_perfil = new WP_Query( $args );
+	if ( $footer_list_perfil->have_posts() ) {
+		$count = $footer_list_perfil->found_posts;
+		$count_loop = 0;
+
+		/* Quantidade de itens por coluna */
+		$columns = $count / 3;
+
+		while ( $footer_list_perfil->have_posts() ) :
+			$footer_list_perfil->the_post();
+			
+			$count_loop++;
+
+			if ( $count_loop == 1 || $count_loop == $columns ) {
+				echo "<div class='col-sm-4'>";
+			}
+
+			the_title();
+			echo "<br>";
+
+			if ( $count_loop == 1 || $count_loop == $columns ) {
+				echo "</div>";
+			}
+
+
+
+		endwhile;
+		wp_reset_query();
+	}
+	echo "</div>";
+	echo "</div><!-- .footer-list-perfil -->";
+}
+add_action( 'wp_footer', 'footer_list_perfil' );
