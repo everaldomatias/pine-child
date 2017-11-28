@@ -80,6 +80,24 @@
 	transition: height .3s ease-in-out;
 }
 
+/* Contact Form 7 */
+.wpcf7 {
+
+}
+.wpcf7 label {
+	display: block;
+}
+.wpcf7 input,
+.wpcf7 textarea {
+	width: 100%;
+}
+
+.wpcf7 input[type="submit"] {
+	display: block;
+	margin: 0 auto;
+	width: auto;
+}
+
 .gradient {
 	display: none;
 }
