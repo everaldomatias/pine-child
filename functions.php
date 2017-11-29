@@ -58,33 +58,55 @@ function footer_list_perfil() {
 	$args = array(
 		'post_type' => 'perfil',
 		'posts_per_page' => -1,
-		'post_status' => 'publish'
+		'post_status' => 'publish',
+		'orderby' => 'title',
+		'order' => 'ASC'
 	);
 	$footer_list_perfil = new WP_Query( $args );
 	if ( $footer_list_perfil->have_posts() ) {
-		$count = $footer_list_perfil->found_posts;
-		$count_loop = 0;
+		$qtde_posts = $footer_list_perfil->found_posts;
+		$contagem_loop = 0;
 
 		/* Quantidade de itens por coluna */
-		$columns = $count / 3;
+		$qtde_por_coluna = $qtde_posts / 4;
+		$qtde_por_coluna = round( $qtde_por_coluna );
+		
+		/* Quantidade de impressões da div de abertura das colunas*/
+		$impressao = 0;
 
 		while ( $footer_list_perfil->have_posts() ) :
 			$footer_list_perfil->the_post();
 			
-			$count_loop++;
+			$contagem_loop++;
+			
+			if ( $contagem_loop <= $qtde_por_coluna ) {
 
-			if ( $count_loop == 1 || $count_loop == $columns ) {
-				echo "<div class='col-sm-4'>";
+				if ( $contagem_loop == 1 ) {
+
+					echo "<ul class='col-sm-3'>";
+					echo "<li><a href=" . esc_url( get_permalink() ) . ">" . apply_filters( 'the_title', get_the_title() ) . "</a></li>";
+
+					$impressao++;
+
+				} elseif( $contagem_loop == $qtde_por_coluna ) {
+
+					echo "<li><a href=" . esc_url( get_permalink() ) . ">" . apply_filters( 'the_title', get_the_title() ) . "</a></li>";
+
+					if ( $impressao == 4 ) {
+						$contagem_loop = 1;
+					} else {
+						$contagem_loop = 0;
+						echo "</ul>";
+					}
+
+				} else {
+
+					echo "<li><a href=" . esc_url( get_permalink() ) . ">" . apply_filters( 'the_title', get_the_title() ) . "</a></li>";
+
+				}
+
 			}
-
-			the_title();
-			echo "<br>";
-
-			if ( $count_loop == 1 || $count_loop == $columns ) {
-				echo "</div>";
-			}
-
-
+			
 
 		endwhile;
 		wp_reset_query();
