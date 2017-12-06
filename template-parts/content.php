@@ -9,13 +9,13 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-sm-4' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'col-sm-4' ); ?> itemscope="" itemtype="http://schema.org/Person">
 	<?php if ( has_post_thumbnail() ) : ?>
 		<a href="<?php the_permalink(); ?>" class="post-item__image"<?php pine_thumbnail_src( 'pine-column-full' ); ?>></a>
 	<?php
 	endif; ?>
 
-	<?php the_title( sprintf( '<h2 class="post-item__title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+	<?php the_title( sprintf( '<h2 class="post-item__title" itemprop="name"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 
 	<?php if ( is_single() ): ?>
 		<?php the_content( sprintf(

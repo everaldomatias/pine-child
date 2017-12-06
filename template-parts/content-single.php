@@ -11,7 +11,8 @@
 
 <?php if ( 'perfil' == get_post_type() ): ?>
 
-	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="" itemtype="http://schema.org/Person">
+		<meta itemprop="name" content="<?php the_title(); ?>" />
 		<?php the_content(); ?>
 
 		<?php
@@ -22,7 +23,6 @@
 			$site		= get_post_meta( $post_id, 'site', true );
 			$link 		= get_post_meta( $post_id, 'link', true );
 			$to_report	= get_post_meta( $post_id, 'to_report', true );
-
 		?>
 
 		<?php if ( ! empty( $pes ) ): ?>
@@ -30,19 +30,19 @@
 		<?php endif; ?>
 
 		<?php if ( ! empty( $instagram ) ): ?>
-			<a class="instagram" href="<?php echo esc_url( $instagram ); ?>" target="_blank">Instagram</a>
+			<a class="instagram" href="<?php echo esc_url( $instagram ); ?>" target="_blank" itemprop="sameAs">Instagram</a>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $facebook ) ): ?>
-			<a class="facebook" href="<?php echo esc_url( $facebook ); ?>" target="_blank">Facebook</a>
+			<a class="facebook" href="<?php echo esc_url( $facebook ); ?>" target="_blank" itemprop="sameAs">Facebook</a>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $site ) ): ?>
-			<a class="link" href="<?php echo esc_url( $site ); ?>" target="_blank">Site</a>
+			<a class="link" href="<?php echo esc_url( $site ); ?>" target="_blank" itemprop="sameAs">Site</a>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $link ) ): ?>
-			<a class="link" href="<?php echo esc_url( $link ); ?>" target="_blank">Outro link</a>
+			<a class="link" href="<?php echo esc_url( $link ); ?>" target="_blank" itemprop="sameAs">Outro link</a>
 		<?php endif; ?>
 
 		<?php if ( ! empty( $to_report ) ): ?>
@@ -71,5 +71,4 @@
 		) ); ?>
 	</article><!-- #post-## -->
 
-<?php endif ?>
-
+<?php endif; ?>
