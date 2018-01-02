@@ -46,6 +46,15 @@
 }
 
 /* Perfil */
+.single-perfil .gallery img {
+	height: auto;
+	width: 25%;
+}
+@media ( max-width: 768px ) {
+	.single-perfil .gallery img {
+		width: 50%;
+	}	
+}
 .single-perfil .pes {
 	background: url( 'assets/images/feet.png' ) left center no-repeat;
 	background-size: 40px;

@@ -13,7 +13,6 @@
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="" itemtype="http://schema.org/Person">
 		<meta itemprop="name" content="<?php the_title(); ?>" />
-		<?php the_content(); ?>
 
 		<?php
 			$post_id	= get_the_ID();
@@ -24,6 +23,25 @@
 			$link 		= get_post_meta( $post_id, 'link', true );
 			$to_report	= get_post_meta( $post_id, 'to_report', true );
 		?>
+
+		<?php
+			/* Gallery of Images */
+			$images = get_post_meta( $post_id, 'perfil_metabox_images', true );
+
+			if ( !empty( $images ) ) {
+				echo '<div class="gallery">';
+				foreach ( explode( ',', $images ) as $image_id ) {
+				    $image = wp_get_attachment_image_src( $image_id );
+				    $image_full = wp_get_attachment_image_src( $image_id, 'full' );
+				    echo '<a href="' . esc_url( $image_full[0] ) . '">';
+				    echo '<img src="' . esc_url( $image[0] ) . '">';
+				    echo '</a>';
+				}
+				echo '</div>';
+			}
+		?>
+		
+		<?php the_content(); ?>
 
 		<?php if ( ! empty( $pes ) ): ?>
 			<span class="pes"><?php echo esc_html( $pes ); ?></span>
