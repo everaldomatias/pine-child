@@ -35,7 +35,7 @@ add_action( 'wp_enqueue_scripts', 'pine_child_scripts' );
 /**
  * Custom Post Types.
  */
-require_once dirname(__FILE__) . '/inc/cpt.php';
+require_once dirname( __FILE__ ) . '/inc/cpt.php';
 
 
 /**
@@ -44,7 +44,25 @@ require_once dirname(__FILE__) . '/inc/cpt.php';
 function pine_define_inicial( $post_ID, $post, $update ) {
 
 	$title = get_the_title( $post_ID );
-	wp_set_post_terms( $post_ID, $title[0], 'inicial' );
+
+	$words = explode( " ", $title );
+
+	/* Remove specifics words of the array  */
+	$ignore_words = array( 'Feet', 'feet', 'Pés', 'pés', 'Pezinhos', 'pezinhos' );
+	foreach ( $words as $key => $value ) {
+	   	if ( in_array( $value, $ignore_words ) ){
+	     	unset( $words[$key] );
+	   	}
+	}
+
+	/* Init array $iniciais */
+	$iniciais = array();
+
+	foreach ( $words as $word ) {
+	    $iniciais[] = substr( $word, 0, 1 );
+	}
+
+	wp_set_post_terms( $post_ID, $iniciais, 'inicial' );
 
 }
 add_action( 'save_post_perfil', 'pine_define_inicial', 10, 3 );
